@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>PHP社区后台管理系统</title>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/global.css"/>
+	
+		<style type="text/css">
+			.btn-group{
+				margin-top: 10px;
+				color: black;
+			}
+			.btn-group a{
+				color: black;
+			}
+		</style>
+		
+	</head>
+	<script>
+		var APP="__APP__";
+	</script>
+	<body>
+		<!--头部导航栏-->
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				        <span class="sr-only">Toggle navigation</span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+			     	 </button>
+					<a class="navbar-brand" href="{:U('Index/index')}">PHP社区内容管理</a>
+				</div>
+				
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li {$index}>
+							<a href="{:U('Admin/index')}">首页</a>
+						</li>
+						<li {$topic}>
+							<a href="{:U('Admin/topicLists')}">话题管理</a>
+						</li>
+						<li >
+							<a href="#">评论管理</a>
+						</li>
+						<li>
+							<a href="#">用户管理</a>
+						</li>
+						<li>
+							<a href="#">酷站管理</a>
+						</li>
+						<li>
+							<a href="#">返回前台</a>
+						</li>
+					</ul>
+					
+					<!--未登录时的按钮-->
+					<php>if($_SESSION['isLogin']!=1){</php>
+					<div class="btn-group pull-right">
+						<a href="{:U('User/login')}" class="btn btn-default">登录</a>
+						<a href="{:U('User/register')}" class="btn btn-default">注册</a>
+					</div>
+					<php>}else{</php>
+					<!--登录后的按钮-->
+					<div class="btn-group pull-right">
+					 	<button type="button" class="btn btn-default" data-toggle="dropdown">
+						   {$_SESSION['userinfo']}<span class="caret"></span>
+						</button>
+						<a href="{:U('User/logout')}" class="btn" style="color:white;">退出</a>
+					</div>
+					<php>}</php>
+				</div>
+				<!-- /.navbar-collapse -->
+			</div>
+			<!-- /.container-fluid -->
+		</nav>

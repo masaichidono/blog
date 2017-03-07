@@ -1,0 +1,72 @@
+<include file="Public:public_header"/>
+<!--内容-->
+<style type="text/css">
+	
+</style>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8">
+					<div class="content">
+						<h3>修改用户密码</h3>
+						<ul class="nav nav-tabs">
+						  <li role="presentation"><a href="#">基本设置</a></li>
+						  <li role="presentation"><a href="{:U('User/changeavater')}">头像设置</a></li>
+						  <li role="presentation" class="active"><a href="#">修改密码</a></li>
+						</ul>
+						<!--修改密码面板-->
+						<form class="form-horizontal" style="margin-top: 5rem;" method="post" action="{:U('User/doChangepwd')}">
+						  <div class="form-group">
+						    <label for="inputEmail3" class="col-sm-2 col-lg-offset-2 control-label">原密码</label>
+						    <div class="col-sm-4">
+						      <input type="password" name="oldpwd"  class="form-control" id="inputEmail3" placeholder="请输入您当前的密码">
+						       <span class="help-block">请输入你的密码</span>
+						    </div>
+						  </div>
+						  
+						  <div class="form-group">
+						    <label for="inputPassword3" class="col-sm-2 col-lg-offset-2 control-label">新密码</label>
+						    <div class="col-sm-4">
+						      <input type="password"  name="newpwd" class="form-control" id="inputPassword3" placeholder="请输入您的新密码">
+						      <span class="help-block">请输入新密码</span>
+						    </div>
+						  </div>
+						  <div class="form-group">
+						    <label for="inputPassword3" class="col-sm-2 col-lg-offset-2 control-label">再次输入</label>
+						    <div class="col-sm-4">
+						      <input type="password" name="newpwd1" class="form-control" id="inputPassword3" placeholder="再次输入新密码">
+						      <span class="help-block">请再次输入你的密码</span>
+						    </div>
+						  </div>
+						  <div class="form-group">
+						    <label for="inputPassword3" class="col-sm-2 col-lg-offset-2 control-label">验证码</label>
+						    
+						      <img src="__APP__/User/vertify" style="float: left;padding: 6px 0px;" onclick="changeVertify(this)"/>
+						      <script type="text/javascript">
+						      	function changeVertify(obj){
+//						      		obj.src="{:U('User/vertify/"+new Date().getTime()+"')}";
+									obj.src="__APP__/User/vertify/"+ new Date().getTime()
+									//添加时间戳是使浏览器每次缓存不保存
+						      	}
+						      </script>
+						      <div class="col-sm-4">
+						      <input type="text" name="vertify" class="form-control" value="{$ver}">
+						    </div>
+						  </div>
+						  <div class="form-group">
+						    <label for="inputPassword3" class="col-sm-2 col-lg-offset-2 control-label">提交</label>
+						    <div class="col-sm-4">
+						      <button class="btn btn-primary" type="submit">确认修改</button>
+						    </div>
+						  </div>
+						</form>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="content">
+						
+					</div>
+				</div>
+			</div>
+		</div>
+
+<include file="Public:public_footer"/>

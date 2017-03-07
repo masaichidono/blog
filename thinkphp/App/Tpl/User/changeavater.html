@@ -1,0 +1,36 @@
+<include file="Public:public_header"/>
+<!--内容-->
+<style type="text/css">
+	
+</style>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8">
+					<div class="content container-fluid">
+						<h3>修改用户密码</h3>
+						<ul class="nav nav-tabs">
+						  <li role="presentation"><a href="#">基本设置</a></li>
+						  <li role="presentation" class="active"><a href="{:U('User/changeavater')}">头像设置</a></li>
+						  <li role="presentation"><a href="#">修改密码</a></li>
+						</ul>
+						<h4>当前头像</h4>
+						<div class="container-fluid col-sm-offset-4" style="margin-bottom: 2rem;">
+							<img src="__ROOT__/Upload/thumb_{$info.avatar}" class="img-rounded" width="150" height="150"/>
+							<img src="__ROOT__/Upload/thumb_{$info.avatar}" class="img-rounded" width="100" height="100"/>
+						</div>	
+							<form action="{:U('User/uploadAvatar')}" method="post" class="col-sm-offset-4" enctype="multipart/form-data">
+								<span>选择</span>
+								<input type="file" name="icon" id="" value="选择文件" style="display: inline-block;margin-bottom: 1rem;"/>
+								<button type="submit" style="display: block;" class="btn btn-primary">确认</btton>
+							</form>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="content">
+						
+					</div>
+				</div>
+			</div>
+		</div>
+
+<include file="Public:public_footer"/>

@@ -1,0 +1,109 @@
+<include file="Public:public_header"/>
+<style type="text/css">
+	#xinxi>a{
+		font-size: 20px;
+		
+	}
+	#xinxi>span{
+		font-size: 20px;
+		display: block;
+	}
+	.underline{
+		padding: 1rem 0;
+		border-bottom: 2px solid #CCCCCC;
+	}
+	.line{
+		height: 2rem;
+		background-color: #dbdbdb;
+	}
+	.content{
+		height: auto !important;
+	}
+	
+	.clearfix:before,.clearfix:after{
+		content: "";
+		display: block;
+		clear: both;
+	}
+</style>
+		<!--内容-->
+		<div class="container">
+			<ul class="breadcrumb">
+                            <li><a href="#">首页</a> <span class="divider"></span></li>
+                            <li><a href="#">php</a> <span class="divider"></span></li>
+                            <li class="active">hello</li>
+                        </ul>
+			<div class="row">
+				<div class="col-md-8">
+					<div class="content container-fluid clearfix" style="padding: 1rem;">
+						<h3 style="border:none;">{$data['title']}</h3>
+						
+						<p>作者:{$data['userinfo']['name']}&nbsp;&nbsp;{$data['typeinfo']['create_date']}发布&nbsp;&nbsp;分类：{$data['typeinfo']['name']}&nbsp;&nbsp;{$data['hits']}阅读</p>
+						<p class="underline">标签:
+							<foreach name="tag" item="vo">
+								<span style="margin: 0 1rem;">{$vo}</span>
+							</foreach>
+						</p>
+						<!--<h5 class="underline">标签:php</h5>-->
+						<div class="detail_content" style="overflow: auto;">{$data['content']}</div>
+						<div class="underline"></div>
+						<div>
+							<h3>评论</h3>
+							<textarea name="" rows="5" style="width: 100%;" id="comment_content"></textarea>
+						</div>
+						<input type="hidden" name="post_id" id="topic_id" value="{$data._id}"/>
+						<button class="btn btn-primary" id="comment_sub_btn">快速回复</button>
+						<!--评论展示-->
+						<foreach name="commentlists" item="vo">
+							<div id="comment_info" style="padding: 1rem;">
+								<div class="row">
+									<a href="#" class="col-sm-1">
+										<img src="__ROOT__/Uploads/{}" alt="" style="width: 64px;height: 64px;"/>
+									</a>
+									<div class="col-sm-10 " style="margin-left: 2rem;">
+										<h5>[1]楼<a href="#">123</a></h5>
+										<div>
+											123
+										</div>
+										<div style='width:100%;text-align: right;'>发布于{$vo.created_date|date="Y-m-d H:i:s",###} <a href="javascript:;" class="show_textarea_btn" >回复</a>|{:W('CommentDigg',array('comment_id'=>$vo['_id'],'uid'=>$vo['uid']))}
+										
+										</div>
+										<div style="display:none" class="reply_textarea"><textarea style="width:400px;"></textarea>
+											<a href="javascript:;" class="btn btn-primary reply_comment" p_id="{$data._id}" mid="{$Think.session.mid}" comment_id="{$vo._id}" uname="{$vo.userinfo.uname}" uid="{$vo.uid}">回复</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</foreach>
+					</div>
+					
+				</div>
+				<div class="col-md-4">
+					<div class="content" >
+						<!--个人信息pane-->
+						<div class="container-fluid" style="padding: 2rem;">
+							<div class="row" >
+								<img src="" alt="" width="80" height="80" class="col-sm-4"/>
+								<div style="float: left;" class="col-sm-8" id="xinxi">
+									<a href="#">123</a>
+									<span >积分:123</span>
+								</div>
+							</div>
+							<div class="underline"></div>
+							<h5>个人简介:</h5>
+							<div class="underline"></div>
+							<button class="btn col-sm-12" style="background-color: #ccc;">个人信息通知</button>
+						</div>
+						<div class="line"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script charset="utf-8" src="__PUBLIC__/kindeditor/kindeditor.js"></script>
+		<script charset="utf-8" src="__PUBLIC__/kindeditor/lang/zh-CN.js"></script>
+		<script>
+		        KindEditor.ready(function(K) {
+		                window.editor = K.create('#editor_id');
+		        });
+		</script>
+<include file="Public:public_footer"/>

@@ -1,0 +1,50 @@
+
+body{
+	background: url(../img/bg.gif) 0 0 repeat;
+	padding-top: 70px;
+}
+/*内容*/
+.content{
+	/*height: 700px;*/
+	background-color: #ffffff;
+	padding-top: 10px;
+}
+.content h3{
+	padding-bottom: 10px;
+	border-bottom: 2px solid #ccc;
+	text-indent: 10px;
+	font-weight: bold;
+}
+/*底部*/
+.footer{
+	height: 80px;
+	background-color: #006666;
+	text-align: center;	
+	padding-top: 20px;
+	margin-top: 20px;
+}
+.footer a{
+	font-size: 14px;
+	color: white;
+	padding-right: 5px;
+	margin-bottom: 10px;
+}
+.footer a:first-child{
+	border-right: solid 1px white;
+}
+.footer p{
+	font-size: 20px;
+	color: white;
+}
+.btn-group a{
+	color: white;
+}
+.underline {
+	
+	/*border-bottom: 2px solid #CCCCCC;*/
+}
+
+.line {
+	height: 2rem;
+	background-color: #dbdbdb;
+}

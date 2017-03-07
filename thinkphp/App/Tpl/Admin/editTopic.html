@@ -1,0 +1,89 @@
+<include file="Public:admin_header"/>
+		
+		<!--内容-->
+		<div class="container">
+			
+			<div class="row">
+				<div class="content" style="padding:1rem;">
+					<!--面包屑导航条-->
+					<ol class="breadcrumb">
+						<li>
+							<a href="#">内容管理</a>
+						</li>
+						<li>
+							<a href="#">话题管理</a>
+						</li>
+						<li class="active">新列表</li>
+					</ol>
+					<!--导航栏-->
+					<ul class="nav nav-tabs">
+					  <li role="presentation"><a href="{:U('Admin/topicLists')}">话题列表</a></li>
+					  <li role="presentation" class="active"><a href="#">编辑话题</a></li>
+					</ul>
+					<!--话题表格-->
+					
+					<div class="content">
+						<h3>编辑话题</h3>
+						<div class="row">
+							<div class="col-sm-6">
+								<form action="{:U('Admin/doEditTopic')}" method="post">
+								<div class="container-fluid" style="padding: 1rem;">
+									<div class="form-group">
+										<label for="exampleInputEmail1">话题标题</label>
+		   							 	<input type="text" name="topic_title" class="form-control" id="topic_title" value="{$data.title}">
+									</div>
+									<div class="form-group">
+										<label for="exampleInputEmail1">话题内容</label>
+		   							 	<textarea id="editor_id" name="topic_content" style="width:700px;height:300px;">
+											{$data.content}
+										</textarea>
+									</div>
+									<div class="form-group">
+										<label for="exampleInputEmail1">帖子标签</label>
+		   							 	<input type="text" name="topic_tag" class="form-control" id="exampleInputEmail1" value="{$data.tag}">
+										<span class="help-block">多个标签使用，分割，一次最多输入5个</span>
+									</div>
+									<div class="form-group">
+										<h4>板块</h4>
+										<select name="type" >
+											<foreach name="typelist" item="vo">
+												<option value="{$vo.name}" <php>if($data['type_id']==$vo['name']){echo 'selected';}</php>>{$vo.name}</option>
+											</foreach>
+										</select>
+									</div>
+									<input type="hidden" name="topic_id" id="" value="{$data['_id']}" />
+									<div class="form-group">
+										<span style="margin-right: 2rem;font-weight: bold;">是否可见:</span>
+										<input type="radio" name="visible" id="" value="1"  <php>if($data['visible']==1){echo 'checked';}</php> />可见
+										<input type="radio" name="visible" id="" value="0" <php>if($data['visible']==0){echo 'checked';}</php> />不可见
+									</div>
+									<!--验证码-->
+									<div class="form-group">
+										<h4>验证码</h4>
+										<img src="__APP__/User/vertify" height="26" id="ma" onclick="clk(this)"/>
+										<script type="text/javascript">
+											function clk(obj){
+												obj.src="__APP__/User/vertify/time"+new Date().getTime();	
+											}
+										</script>
+										<input type="text" name="topic_vertify" id="" value="" />
+										<button class="btn btn-primary" type="submit">修改</button>
+										<a href="{:U('Index/topic_detail')}" class="btn btn-primary">跳转</a>
+									</div>
+								</div>
+							</form>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		<script charset="utf-8" src="__PUBLIC__/kindeditor/kindeditor.js"></script>
+		<script charset="utf-8" src="__PUBLIC__/kindeditor/lang/zh-CN.js"></script>
+		<script>
+		        KindEditor.ready(function(K) {
+		                window.editor = K.create('#editor_id');
+		        });
+		</script>
+<include file="Public:admin_footer"/>
